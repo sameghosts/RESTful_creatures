@@ -22,5 +22,6 @@ APP.get('/', (req, res) => {
 
 //controllers/routes
 APP.use('/dinos', require('./routes/dinos'));
+APP.use('/prehistoric_creatures', require('./routes/prehistoric_creatures'));
 
 APP.listen(8420, () => console.log('Hey! LISTEN! 🧚‍♂️'));

@@ -3,3 +3,8 @@ h1 {
   color: red;
   
 }
+img{
+  border-radius: 8px;
+  max-width: 75%;
+  height: auto;s
+}
