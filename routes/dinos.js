@@ -7,7 +7,7 @@ ROUTER.get('/', (req, res) => {
   let dinos = fs.readFileSync('./dinos.json');
   let dinoData = JSON.parse(dinos);
   console.log(dinoData);
-  res.render('dinos/index', {dinos: [] });
+  res.render('dinos/index', {dinos: dinoData });
 });
 
 module.exports = ROUTER;
