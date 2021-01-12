@@ -24,9 +24,9 @@ ROUTER.post('/', (req, res) => {
   let dinos = fs.readFileSync('./dinos.json');
   dinosJS = JSON.parse(dinos);
   //add new dino from req.body to the array
-  dinoJS.push(req.body);
+  dinosJS.push(req.body);
   //turn dino array into JSON
-  let dinoJSON = JSON.stringify(dinoJS);
+  let dinoJSON = JSON.stringify(dinosJS);
   //write new dino array to dinos.json
   fs.writeFileSync('./dinos.json', dinoJSON);
   res.redirect('/dinos');
