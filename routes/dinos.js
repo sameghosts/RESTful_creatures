@@ -3,7 +3,7 @@ const ROUTER = EXPRESS.Router();
 
 //Index
 ROUTER.get('/', (req, res) => {
-  res.send('dinos baby!!!!');
+  res.render('dinos/index', {dinos: [] });
 });
 
 module.exports = ROUTER;
