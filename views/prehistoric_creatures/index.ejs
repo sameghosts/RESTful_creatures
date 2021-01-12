@@ -3,7 +3,8 @@
 <ul>
   <% preCreats.forEach(preCreat => { %>
   <li>
-    <p><strong><%= preCreat.type %></strong> looks like <%= preCreat.img_url %></p>
+    <p><strong><%= preCreat.type %></strong> looks like </p>
+    <img src="<%= preCreat.img_url %>">
   </li>
   <% }) %>
 </ul>

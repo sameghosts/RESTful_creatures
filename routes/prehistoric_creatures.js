@@ -3,14 +3,23 @@ const ROUTER = EXPRESS.Router();
 const fs = require('fs');
 
 
-//Index PrehCreat
+//Index PrehCreat - /prehistoric_creatures
+ROUTER.get('/', (req, res) => {
+  let prehCreats = fs.readFileSync('./prehistoric_creatures.json');
+  let prehCreatData = JSON.parse(prehCreats);
+  console.log(prehCreatData);
+  res.render('prehistoric_creatures/index', {prehCreats: prehCreatData });
+});
+
+// Get 1 - /prehistoric_creatures/1
 
 // Form for New PrehCreat
 
+
 // Create / Post New PreahCreat
 //create - POST /prehistoric_creatures
-ROUTER.post('/', (req, res) => {
-  console.log(req.body)
+// ROUTER.post('/', (req, res) => {
+//   console.log(req.body)
   // add prehistoric creature to prehistoric_creatures.json
 
   //turn prehistoric_creatures.json into a mutable array
@@ -18,4 +27,6 @@ ROUTER.post('/', (req, res) => {
 
   //turn PrehCreat array into JSON - JSON.stringify
 
-  //write new PrehCreat array to prehistoric_creatures.json
+  //write new PrehCreat array to prehistoric_creatures.JSON
+
+  module.exports = ROUTER;
