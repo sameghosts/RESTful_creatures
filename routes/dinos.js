@@ -55,7 +55,16 @@ ROUTER.get('/:id/edit', (req, res) =>{
 });
 
 ROUTER.put('/:id', (req, res) =>{
-  console.log(req.body);
+  console.log(`|-------- PUT to /dinos/${req.params.id}`);
+
+  // get the dino from my data store (same logic as show/details)
+
+  //update my dino
+
+  //write new dino to data store
+
+  //send my response
+
   res.send(`Editing dino at ${req.params.id}`);
 })
 
