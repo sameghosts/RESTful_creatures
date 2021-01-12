@@ -1,6 +1,7 @@
 //initialize express and instance as app
 const EXPRESS = require('express');
 const APP = EXPRESS();
+const METHODOVERRIDE = require('method-override');
 const path = require('path');
 
 //ejs layouts
@@ -15,6 +16,9 @@ APP.use(EXPRESS.static(path.join(__dirname, '/static')));
 
 //url encoded, body parsing middleware
 APP.use(EXPRESS.urlencoded({ extended: false}));
+
+//method override middleware
+APP.use(METHODOVERRIDE('_method'));
 //global routes
 APP.get('/', (req, res) => {
   res.render('home');
