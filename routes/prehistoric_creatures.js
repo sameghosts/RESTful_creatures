@@ -18,21 +18,19 @@ ROUTER.get('/new', (req, res) =>{
 
 // Get 1 - /prehistoric_creatures/1
 ROUTER.get('/:id', (req, res) => {
-  res.render('prehistoric_creatures/show', {historics: histData[req.params.id]})
+  let index = req.params.id;
+  res.render('prehistoric_creatures/show', { historic: histData[index] });
 });
 
 
 // Create / Post New PreahCreat
 //create - POST /prehistoric_creatures
-// ROUTER.post('/', (req, res) => {
-//   console.log(req.body)
-  // add prehistoric creature to prehistoric_creatures.json
+ROUTER.post('/', (req, res) => {
 
-  //turn prehistoric_creatures.json into a mutable array
-  //add new PrehCreat from req.body to the array
+  histData.push(req.body);
+  let histJSON = JSON.stringify(histData);
+  fs.writeFileSync('./prehistoric_creatures.json', histJSON);
+  res.redirect('/prehistoric_creatures');
+});  
 
-  //turn PrehCreat array into JSON - JSON.stringify
-
-  //write new PrehCreat array to prehistoric_creatures.JSON
-
-  module.exports = ROUTER;
+module.exports = ROUTER;
