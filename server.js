@@ -13,8 +13,12 @@ APP.use(EJSLAYOUTS);
 //public folder
 APP.use(EXPRESS.static(path.join(__dirname, '/static')));
 
+//global routes
 APP.get('/', (req, res) => {
   res.render('home');
 });
+
+//controllers/routes
+APP.use('/dinos', require('./routes/dinos'));
 
 APP.listen(8420, () => console.log('Hey! LISTEN! 🧚‍♂️'));
