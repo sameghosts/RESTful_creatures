@@ -13,6 +13,8 @@ APP.use(EJSLAYOUTS);
 //public folder
 APP.use(EXPRESS.static(path.join(__dirname, '/static')));
 
+//url encoded, body parsing middleware
+APP.use(EXPRESS.urlencoded({ extended: false}));
 //global routes
 APP.get('/', (req, res) => {
   res.render('home');
