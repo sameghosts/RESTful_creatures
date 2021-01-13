@@ -33,7 +33,7 @@ ROUTER.get('/:id', (req, res) =>{
     res.redirect('dinos/new');
   } else {
     //ship it
-    res.render('dinos/show', {dino: thisDino });
+    res.render('dinos/show', {dino: thisDino, dinoID: dinoIndex });
   }
 });
 
@@ -56,17 +56,40 @@ ROUTER.get('/:id/edit', (req, res) =>{
 
 ROUTER.put('/:id', (req, res) =>{
   console.log(`|-------- PUT to /dinos/${req.params.id}`);
-
   // get the dino from my data store (same logic as show/details)
+  let dinoIndex = req.params.id
+  let dinos = fs.readFileSync('./dinos.json');
+  let dinoData = JSON.parse(dinos);
+  
+  console.log(dinoData);
 
   //update my dino
-
+  dinoData[dinoIndex] = req.body;
+  console.log(dinoData);
   //write new dino to data store
+  //turn dino array into json - stringify
+  let dinoJSON = JSON.stringify(dinoData);
+  fs.writeFileSync('./dinos.json', dinoJSON);
+  
+  //send my response (redirect to the show/details)
 
-  //send my response
+  res.redirect(`/dinos/${req.params.id}`);
+});
 
-  res.send(`Editing dino at ${req.params.id}`);
-})
+//destroy - POST / delete with method middleware
+ROUTER.delete('/:id', (req, res) =>{
+  console.log('--------DELETE--------');
+  //get the dino from my data source
+  let dinoIndex = req.params.id;
+  let dinos = fs.readFileSync('./dinos.json');
+  dinosJS = JSON.parse(dinos);
+
+  dinosJS.splice(dinoIndex, 1);
+
+  fs.writeFileSync('./dinos.json', JSON.stringify(dinosJS));
+
+  res.redirect('/dinos');
+});
 
 //create - POST /dinos
 ROUTER.post('/', (req, res) => {
